@@ -1,133 +1,114 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="45%" r="55%">
-      <stop offset="0%" stop-color="#1a3a6e"/>
+    <radialGradient id="bg" cx="48%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#162d5a"/>
       <stop offset="100%" stop-color="#060d1f"/>
     </radialGradient>
-    <radialGradient id="bladeGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#b8e4ff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#7bc8ff" stop-opacity="0.5"/>
+    <radialGradient id="iceGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b8e4ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7bc8ff" stop-opacity="0"/>
     </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="softglow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+    <filter id="softglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="figureglow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- Background circle -->
+  <!-- Background -->
   <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="236" fill="none" stroke="rgba(123,200,255,0.1)" stroke-width="1.5"/>
 
-  <!-- Subtle inner ring -->
-  <circle cx="256" cy="256" r="236" fill="none" stroke="rgba(123,200,255,0.12)" stroke-width="1.5"/>
+  <!-- Ice rink glow at base -->
+  <ellipse cx="218" cy="420" rx="130" ry="18" fill="url(#iceGlow)" filter="url(#softglow)"/>
 
-  <!-- Ice sparkle top-left -->
-  <g filter="url(#softglow)" opacity="0.7">
-    <line x1="92" y1="108" x2="92" y2="128" stroke="#b8e4ff" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="82" y1="118" x2="102" y2="118" stroke="#b8e4ff" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="85" y1="111" x2="99" y2="125" stroke="#b8e4ff" stroke-width="1.8" stroke-linecap="round"/>
-    <line x1="99" y1="111" x2="85" y2="125" stroke="#b8e4ff" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Ice sparkle — top left -->
+  <g filter="url(#softglow)" opacity="0.65">
+    <line x1="82" y1="100" x2="82" y2="122" stroke="#b8e4ff" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="71"  y1="111" x2="93"  y2="111" stroke="#b8e4ff" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="74"  y1="103" x2="90"  y2="119" stroke="#b8e4ff" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="90"  y1="103" x2="74"  y2="119" stroke="#b8e4ff" stroke-width="1.8" stroke-linecap="round"/>
   </g>
 
-  <!-- Ice sparkle top-right -->
-  <g filter="url(#softglow)" opacity="0.55">
-    <line x1="400" y1="90" x2="400" y2="106" stroke="#7bc8ff" stroke-width="2" stroke-linecap="round"/>
-    <line x1="392" y1="98" x2="408" y2="98" stroke="#7bc8ff" stroke-width="2" stroke-linecap="round"/>
-    <line x1="394.5" y1="92.5" x2="405.5" y2="103.5" stroke="#7bc8ff" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="405.5" y1="92.5" x2="394.5" y2="103.5" stroke="#7bc8ff" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Ice sparkle — top right (smaller) -->
+  <g filter="url(#softglow)" opacity="0.45">
+    <line x1="402" y1="82" x2="402" y2="98"  stroke="#7bc8ff" stroke-width="2"   stroke-linecap="round"/>
+    <line x1="394" y1="90" x2="410" y2="90"  stroke="#7bc8ff" stroke-width="2"   stroke-linecap="round"/>
+    <line x1="396" y1="84" x2="408" y2="96"  stroke="#7bc8ff" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="408" y1="84" x2="396" y2="96"  stroke="#7bc8ff" stroke-width="1.5" stroke-linecap="round"/>
   </g>
 
-  <!-- Small sparkle dot bottom-right -->
-  <circle cx="390" cy="370" r="3" fill="#b8e4ff" opacity="0.5" filter="url(#softglow)"/>
-  <circle cx="130" cy="350" r="2" fill="#7bc8ff" opacity="0.4" filter="url(#softglow)"/>
+  <!-- Tiny sparkle dots -->
+  <circle cx="390" cy="355" r="2.5" fill="#b8e4ff" opacity="0.4" filter="url(#softglow)"/>
+  <circle cx="110" cy="340" r="2"   fill="#7bc8ff" opacity="0.35" filter="url(#softglow)"/>
+  <circle cx="420" cy="200" r="2"   fill="#b8e4ff" opacity="0.3"/>
 
-  <!-- ===== ICE SKATE BOOT ===== -->
-  <!-- Boot shaft (tall part) -->
-  <path d="
-    M 188 160
-    L 188 292
-    Q 188 308 204 312
-    L 308 312
-    Q 322 312 324 298
-    L 328 228
-    Q 330 212 316 206
-    L 268 192
-    L 252 160
-    Z
-  " fill="#dff0ff" filter="url(#glow)"/>
+  <!-- ===== SKATER SILHOUETTE (arabesque/spiral pose, facing left) ===== -->
+  <!--
+    Key joints:
+      Head:           (162, 136)
+      Neck base:      (165, 163)
+      Shoulder:       (163, 188)
+      Hip:            (192, 272)
+      Standing ankle: (208, 405)
+      Free leg toe:   (342, 162)
+      Left arm hand:  ( 88, 166)
+      Right arm hand: (262, 218)
+  -->
 
-  <!-- Boot shaft highlight -->
-  <path d="
-    M 200 165
-    L 200 290
-    Q 200 300 210 302
-    L 260 302
-    L 260 175
-    Z
-  " fill="rgba(255,255,255,0.18)"/>
+  <g filter="url(#figureglow)">
 
-  <!-- Boot toe box (front rounded part) -->
-  <path d="
-    M 188 292
-    Q 186 320 192 336
-    Q 198 350 224 354
-    L 310 354
-    Q 326 354 332 342
-    Q 338 330 336 312
-    L 308 312
-    Q 322 312 324 298
-    L 204 312
-    Q 188 308 188 292
-    Z
-  " fill="#c8e6ff"/>
+    <!-- ── Free leg (arabesque, back-right, going UP) rendered first so torso overlaps it ── -->
+    <!-- Upper free leg: hip → knee -->
+    <path d="M 192 272 Q 252 254 296 234"
+          fill="none" stroke="white" stroke-width="25" stroke-linecap="round"/>
+    <!-- Lower free leg: knee → toe -->
+    <path d="M 296 234 Q 322 210 342 162"
+          fill="none" stroke="white" stroke-width="20" stroke-linecap="round"/>
 
-  <!-- Toe box highlight -->
-  <path d="M 196 296 Q 194 322 200 338 Q 202 344 212 347 L 240 347 Q 198 340 196 296 Z"
-        fill="rgba(255,255,255,0.15)"/>
+    <!-- ── Back arm (right arm of skater, extends right) ── -->
+    <path d="M 172 195 Q 218 208 262 218"
+          fill="none" stroke="white" stroke-width="15" stroke-linecap="round"/>
 
-  <!-- Boot laces area (darker inset) -->
-  <rect x="210" y="170" width="54" height="110" rx="8"
-        fill="rgba(10,40,100,0.25)"/>
+    <!-- ── Torso: shoulder → hip (leans forward) ── -->
+    <path d="M 163 188 Q 174 228 192 272"
+          fill="none" stroke="white" stroke-width="34" stroke-linecap="round"/>
 
-  <!-- Laces -->
-  <g stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
-    <line x1="215" y1="183" x2="258" y2="183"/>
-    <line x1="215" y1="198" x2="258" y2="198"/>
-    <line x1="215" y1="213" x2="258" y2="213"/>
-    <line x1="215" y1="228" x2="258" y2="228"/>
-    <line x1="215" y1="243" x2="258" y2="243"/>
-    <line x1="215" y1="258" x2="258" y2="258"/>
-    <!-- Lace cross lines -->
-    <line x1="215" y1="183" x2="215" y2="268" stroke-width="1.5" opacity="0.4"/>
-    <line x1="258" y1="183" x2="258" y2="268" stroke-width="1.5" opacity="0.4"/>
+    <!-- ── Standing leg: hip → knee → ankle ── -->
+    <!-- Upper (thigh) -->
+    <path d="M 192 272 Q 198 330 205 372"
+          fill="none" stroke="white" stroke-width="24" stroke-linecap="round"/>
+    <!-- Lower (calf) -->
+    <path d="M 205 372 Q 207 390 208 405"
+          fill="none" stroke="white" stroke-width="19" stroke-linecap="round"/>
+
+    <!-- ── Forward arm (left arm of skater, extends left) ── -->
+    <path d="M 152 194 Q 122 182  88 166"
+          fill="none" stroke="white" stroke-width="15" stroke-linecap="round"/>
+
+    <!-- ── Head ── -->
+    <circle cx="162" cy="136" r="27" fill="white"/>
+
+    <!-- ── Ponytail flowing back-right ── -->
+    <path d="M 178 124 Q 215 104 248 116 Q 265 122 258 134"
+          fill="none" stroke="white" stroke-width="9" stroke-linecap="round"/>
+
   </g>
 
-  <!-- Boot sole (dark bottom edge) -->
-  <path d="M 188 340 Q 188 360 210 362 L 318 362 Q 340 362 340 342 L 336 328 Q 336 354 318 354 L 210 354 Q 192 354 190 338 Z"
-        fill="rgba(8,20,55,0.7)"/>
+  <!-- ── Skate blade at ankle ── -->
+  <!-- Mount -->
+  <rect x="172" y="405" width="72" height="7" rx="3" fill="rgba(180,220,255,0.7)"/>
+  <!-- Blade — slightly longer than the mount, glowing -->
+  <path d="M 148 414 Q 165 409 178 409 L 252 409 Q 270 409 280 413 Q 284 416 280 418 Q 268 420 252 418 L 178 418 Q 162 418 148 418 Q 140 416 148 414 Z"
+        fill="#c8eaff" filter="url(#glow)"/>
+  <!-- Blade shine -->
+  <line x1="155" y1="414" x2="277" y2="414" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
 
-  <!-- ===== BLADE ===== -->
-  <!-- Blade mount -->
-  <rect x="198" y="355" width="142" height="10" rx="4" fill="#8ab8d8"/>
-
-  <!-- Blade body -->
-  <path d="M 150 368 Q 170 362 200 362 L 340 362 Q 365 362 375 368 Q 380 372 375 374 Q 365 376 340 374 L 200 374 Q 170 374 150 374 Q 140 372 150 368 Z"
-        fill="url(#bladeGlow)" filter="url(#glow)"/>
-
-  <!-- Blade front curve (toe pick area) -->
-  <path d="M 340 362 Q 368 360 378 366 Q 385 370 380 374 Q 372 377 340 374 Z"
-        fill="#e8f6ff" opacity="0.9"/>
-
-  <!-- Blade shine line -->
-  <line x1="160" y1="369" x2="372" y2="369" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-
-  <!-- Blade ice reflection glow beneath -->
-  <ellipse cx="262" cy="382" rx="110" ry="6" fill="#7bc8ff" opacity="0.18" filter="url(#softglow)"/>
-
-  <!-- "A" monogram on boot -->
-  <text x="294" y="286" font-family="Georgia, serif" font-size="44" font-weight="bold"
-        fill="rgba(10,40,100,0.35)" text-anchor="middle">A</text>
 </svg>
